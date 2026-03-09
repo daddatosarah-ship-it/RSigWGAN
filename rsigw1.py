@@ -9,13 +9,12 @@ import torch
 from torch import optim
 from copy import deepcopy
 from tqdm import tqdm
-from config import DEVICE
 from utils import *
 
 """
 Computes the randomised signature for an input path
 """
-
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 def compute_rsig(path: torch.tensor, A1: torch.tensor, A2: torch.tensor, xi1: torch.tensor, xi2: torch.tensor,
                  res_dim: int, activation, device: str = DEVICE) -> torch.tensor:
@@ -144,4 +143,5 @@ class RSigWGANTraining:
                 self.best_generator = deepcopy(self.generator.state_dict())
                 best_loss = loss
         self.generator.load_state_dict(self.best_generator)
+
 
