@@ -13,6 +13,7 @@ from config import *
 import config
 import generators
 
+DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 def get_generator(name):
     if name == "NeuralSDE":
@@ -43,3 +44,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
