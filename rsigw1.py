@@ -9,7 +9,7 @@ import torch
 from torch import optim
 from copy import deepcopy
 from tqdm import tqdm
-
+from config import DEVICE
 from utils import *
 
 """
@@ -144,3 +144,4 @@ class RSigWGANTraining:
                 self.best_generator = deepcopy(self.generator.state_dict())
                 best_loss = loss
         self.generator.load_state_dict(self.best_generator)
+
