@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 import yfinance as yf
 from pathlib import Path
-from .scaling import Standardiser, IDScaler
+from scaling import Standardiser, IDScaler
 
 
 class Data:
@@ -107,5 +107,6 @@ class FOREX(Data):
         log_returns = self.scaler.transform(log_returns)
         paths = rolling_window(log_returns, self.n_lags)
         return paths
+
 
 
