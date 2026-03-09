@@ -19,7 +19,7 @@ from utils import *
 Time augmentation of input path
 """
 
-
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 def apply_time_augmentations(x: torch.tensor, device=DEVICE) -> torch.tensor:
     y = x.clone().to(device)
     t = torch.linspace(0, 1, y.shape[1]).reshape(1, -1, 1).repeat(y.shape[0], 1, 1).to(device)
@@ -178,3 +178,4 @@ class SigWGANTraining:
                 self.best_generator = deepcopy(self.generator.state_dict())
                 best_loss = loss
         self.generator.load_state_dict(self.best_generator)
+
