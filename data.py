@@ -42,7 +42,7 @@ class BrownianMotion(Data):
 
     def generate(self, samples: int) -> torch.tensor:
         path = torch.zeros([samples, self.n_lags, self.dim])
-        path[:, 1:, :] = self.drift * self.std * torch.randn(samples, self.n_lags - 1,self. dim)
+        path[:, 1:, :] = self.drift + self.std * torch.randn(samples, self.n_lags - 1,self. dim)
         return torch.cumsum(path, 1)
 
 
@@ -107,4 +107,5 @@ class FOREX(Data):
         log_returns = self.scaler.transform(log_returns)
         paths = rolling_window(log_returns, self.n_lags)
         return paths
+
 
