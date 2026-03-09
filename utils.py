@@ -86,7 +86,7 @@ import torch
 import omegaconf
 import numpy as np
 
-from .data import (
+from data import (
     BrownianMotion,
     SP500,
     AutoregressiveProcess,
@@ -135,3 +135,4 @@ def get_data(
         data = FOREX(config.timeseries.n_lags)
         paths = data.generate()
     return [data, train_test_split(paths)]
+
