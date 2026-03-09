@@ -90,5 +90,3 @@ others:
   trainable_var: True
   same_matrices: False
   time_homogeneous_readout: False
-import torch
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
